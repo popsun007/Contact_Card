@@ -5,8 +5,9 @@
 		<title>Contact Card</title>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript">
+			var users_data = [];
 			$(document).ready(function(){
-				var users_data = [];
+				
 				var count=0;
 				$('form').submit(function(){
 					users_data.push(count);
@@ -17,14 +18,12 @@
 					$('.board').append("<br> Click for description!<br></div>");
 					count++;
 					return false;
-				// })
-				// $(document).on('click', '.board div', function(){
-				// 	var // Get the value of description
-				// 	$(this).html(dscrp);
-					// $(this).click(function(){
-					// 	var idx = users_data.indexOf(dscrp); // Find the index number related with this description
-					// 	$(this).
-					// })
+				})
+
+				$(document).on('click', '.board div',function(){
+					var class_val = $(this).attr('class'); // Get the class value of which div was clicked.
+					var dscrp = users_data[class_val*4 + 3];  //get the description of this person
+					$(this).text(dscrp); 
 				})
 
 			})
