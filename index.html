@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Contact Card</title>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var users_data = [];
+				var count=0;
+				$('form').submit(function(){
+					users_data.push(count);
+					users_data.push($('.f_name').val());
+					users_data.push($('.l_name').val());
+					users_data.push($('.description').val());
+					$('.board').append("<div class='" + count + "' ><br><b>" + $('.f_name').val() + " " + $('.l_name').val() + "</b><br>");
+					$('.board').append("<br> Click for description!<br></div>");
+					count++;
+					return false;
+				// })
+				// $(document).on('click', '.board div', function(){
+				// 	var // Get the value of description
+				// 	$(this).html(dscrp);
+					// $(this).click(function(){
+					// 	var idx = users_data.indexOf(dscrp); // Find the index number related with this description
+					// 	$(this).
+					// })
+				})
+
+			})
+		</script>
+	</head>
+	<body>
+		<form>
+			<div>
+				<label>First Name</label>
+				<input class="f_name" type="text">
+			</div>	
+			<div>
+				<label>Last Name</label>
+				<input class="l_name" type="text">
+			</div>	
+			<div>
+				<label>Description</label>
+				<textarea class="description"></textarea>
+			</div>
+			<input type="submit">
+		</form>
+		<div class="board"></div>
+	</body>
+</html>
