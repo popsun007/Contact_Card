@@ -14,37 +14,83 @@
 					users_data.push($('.f_name').val());
 					users_data.push($('.l_name').val());
 					users_data.push($('.description').val());
-					$('.board').append("<div class='" + count + "' ><br><b>" + $('.f_name').val() + " " + $('.l_name').val() + "</b><br>");
-					$('.board').append("<br> Click for description!<br></div>");
+					$('.board').append("<div class='" + count + "' ><b>" + $('.f_name').val() + " " + $('.l_name').val() + "</b><br><br> Click for description!<br></div>");
 					count++;
 					return false;
 				})
 
 				$(document).on('click', '.board div',function(){
-					var class_val = $(this).attr('class'); // Get the class value of which div was clicked.
-					var dscrp = users_data[class_val*4 + 3];  //get the description of this person
+					var class_val = $(this).attr('class'); // get the class value of which div was clicked
+					var idx = class_val*4 + 3;	// get the description index number in array
+					var dscrp = users_data[idx];  //get the description of this person
 					$(this).text(dscrp); 
+					// if ($('.'+ class_val).text() === dscrp) {
+					// 	$(this).click(function(){
+					// 		$(this).html("<br><b>" + users_data[idx-2] + " " + users_data[idx-1] + "</b><br>")     
+					// 	})
+					// }
+
+					//*******I want to add a feature: click on a description then turn back to the relate name page. But I tried code above it doesn't work. Btw, hover() works well, just click() not.**********
+
 				})
 
 			})
 		</script>
+		<style type="text/css">
+			body {background-color: #E1E1E1; /*grey*/}
+			.container {
+				margin: 30px auto;
+				width: 800px;
+				font-family: Arial;
+			}
+			.board {
+				width: 260px;
+				vertical-align: top;
+				display: inline-block;
+
+
+			}
+				.board div {
+					margin: 10px 0;
+					padding-top: 10px;
+					padding-left: 10px;
+					width: 250px;
+					height: 100px;
+					background-color: lightgrey;
+					border: 2px solid grey;
+				}
+			form {display: inline-block; width: 350px;}
+			p {display: table-row;}
+			label {display: table-cell;}
+			input {display: table-cell; width: 100px;}
+			textarea {width: 250px; height: 80px;}
+
+		</style>
 	</head>
 	<body>
-		<form>
-			<div>
-				<label>First Name</label>
-				<input class="f_name" type="text">
-			</div>	
-			<div>
-				<label>Last Name</label>
-				<input class="l_name" type="text">
-			</div>	
-			<div>
-				<label>Description</label>
-				<textarea class="description"></textarea>
-			</div>
-			<input type="submit">
-		</form>
-		<div class="board"></div>
+		<div class="container">
+			<form>
+				<p>	
+					<div>
+						<label>First Name</label>
+						<input class="f_name" type="text">
+					</div>	
+				</p>
+				<p>			
+					<div>
+						<label>Last Name</label>
+						<input class="l_name" type="text">
+					</div>
+				</p>
+				<p>
+					<div>
+						<label>Description</label>
+								<textarea class="description"></textarea>
+					</div>
+				</p>
+					<input type="submit">
+				</form>
+				<div class="board"></div>
+		</div>
 	</body>
 </html>
